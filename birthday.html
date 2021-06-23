@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>vaccine_discount</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Map -->
+    <script>
+        L_PREFER_CANVAS = false;
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map_83cdffec76f4439f801bc4c4ed58f658 {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map_089ab16d020449e7833a1e99426ff17c {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPM9KXYXQV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LPM9KXYXQV');
+    </script>
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+
+            <!-- <a class="navbar-brand" href="index.html">백신 할인정보 모음</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">백신 접종자 할인</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="birthday.html">21년 생일혜택</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li> -->
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>생일 혜택 모음(21년)</h1>
+                        <span class="subheading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- 레스토랑 -->
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">아웃백</h2>
+                        <h3 class="post-subtitle">1만원 할인(5만원 이상 주문시)</h3>
+                        <h4 class="post-subtitle">생일 전/후 15일 내 사용가능 / 부메랑 클럽 카드 소지자&제시자 / 포장 주문 시 사용 불가</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">빕스</h2>
+                        <h3 class="post-subtitle">1만원 할인(4만원 이상 주문시)</h3>
+                        <h4 class="post-subtitle">생일 15일 전 쿠폰 자동발급 후 31일 이내에 사용가능/ CJ one 카드 제시자</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">도미노피자</h2>
+                        <h3 class="post-subtitle">도미노세트 25% 할인</h3>
+                        <h4 class="post-subtitle">생일에 해당되는 달 / KT멤버십 이용고객만 해당 / 프리미엄피자+사이드+음료 선택 가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">매드포갈릭</h2>
+                        <h3 class="post-subtitle">디저트 4종 중 택1 + 아메리카노 2잔 제공</h3>
+                        <h4 class="post-subtitle">생일 전/후 7일간 사용 가능 / 테이블 및 일행 당 1회 사용 가능 / 멤버십 회원만 가능 / 12월 24일, 25일, 31일 사용 불가</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">자연별곡</h2>
+                        <h3 class="post-subtitle">15,000원 상당 쌍계명차 선물세트 제공</h3>
+                        <h4 class="post-subtitle">생일 전/후 30일간 내 사용 가능 / 이랜드잇 어플 가입 대상자</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">KFC</h2>
+                        <h3 class="post-subtitle">징거버거 무료</h3>
+                        <h4 class="post-subtitle">생일 2주전 쿠폰 자동 발급</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+
+                <!-- 카페/베이커리 -->
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">베스킨라빈스31</h2>
+                        <h3 class="post-subtitle">싱글레귤러 1+1 쿠폰 증정</h3>
+                        <h4 class="post-subtitle">생일 달 1일 ~ 다음 달 15일까지 사용가능 / 6개월 내 매장 2회 이상 방문고객</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">스타벅스</h2>
+                        <h3 class="post-subtitle">TALL 사이즈 음료 1잔 제공</h3>
+                        <h4 class="post-subtitle">생일 전/후 14일 내 사용가능 / 스타벅스 회원만 가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">엔제리너스</h2>
+                        <h3 class="post-subtitle">아메리카노(s)쿠폰 제공</h3>
+                        <h4 class="post-subtitle">카드회원만 가능 / 생일 한 달 내내 사용 가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">파스쿠찌</h2>
+                        <h3 class="post-subtitle">레귤러 사이즈 음료 1잔 제공</h3>
+                        <h4 class="post-subtitle">생일 전/후 14일 내 사용가능 / 연 10회 이상 매장 이용고객 대상</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">파리바게트</h2>
+                        <h3 class="post-subtitle">12000원 이상 구매시, 2천원 할인쿠폰</h3>
+                        <h4 class="post-subtitle">생일 한달 내내 사용 가능 / 6개월 내 매장 2회 이상 이용고객</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">던킨도너츠</h2>
+                        <h3 class="post-subtitle">도넛1개 아메리카노(small)</h3>
+                        <h4 class="post-subtitle">생일 전/후 2주간 사용 가능 / 만 1년간 (생일 2개월 전까지) 매장 20회 이상 사용시</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">폴바셋</h2>
+                        <h3 class="post-subtitle">음료1잔 무료제공</h3>
+                        <h4 class="post-subtitle">폴바셋 카드 등록자</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">아티제</h2>
+                        <h3 class="post-subtitle">쁘띠 사이즈 음료1잔 무료제공(등급 무관)</h3>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">탐앤탐스</h2>
+                        <h3 class="post-subtitle">음료 사이즈 Up(웰컴 멤버십) / 아메리카노 Tall 무료(골드, VIP멤버십)</h3>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">할리스</h2>
+                        <h3 class="post-subtitle">제조음료 R 무료 1잔(레드 멤버십)</h3>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">커피빈</h2>
+                        <h3 class="post-subtitle">제조음료 무료 1잔(골드클럽 멤버십)</h3>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+
+                <!-- 영화관 -->
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">CGV</h2>
+                        <h3 class="post-subtitle">매점콤보 50%할인 (VIP회원은 콤보 무료)</h3>
+                        <h4 class="post-subtitle">생일 전/후 2주내 사용가능 / VIP콤보(팝콘 L1, 탄산음료 M2)</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">롯데시네마</h2>
+                        <h3 class="post-subtitle">VIP생일쿠폰(팝콘라지사이즈+음료2잔)</h3>
+                        <h4 class="post-subtitle">생일 전/후 1주내 사용가능 / VIP부터 사용가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">메가박스</h2>
+                        <h3 class="post-subtitle">오리지널 팝콘L무료 (VIP는 콤보 무료)</h3>
+                        <h4 class="post-subtitle">생일 2주전 쿠폰발행 / 쿠폰 발행일로부터 4주내 사용 가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+
+                <!-- 놀이공원 -->
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">에버랜드</h2>
+                        <h3 class="post-subtitle">생일자+동반3인 자유이용권 40%할인</h3>
+                        <h4 class="post-subtitle">홈페이지 생일 2주전 가입시 가능 / 생일 1주일전, 생일 열흘 후 사용가능 / 쿠폰을 신분증과 함께 매표소에 제시</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">롯데월드</h2>
+                        <h3 class="post-subtitle">생일자+동반1인 자유이용권 50%할인</h3>
+                        <h4 class="post-subtitle">생일 기재된 사진포함 신분증 제시자 / 해당 월에 속한 생일자에 한함</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">서울랜드</h2>
+                        <h3 class="post-subtitle">생일자+동반3인 자유이용권 45%할인</h3>
+                        <h4 class="post-subtitle">생일 전/후 14일내 사용가능 / 신분증 제시 후 사용가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">이월드</h2>
+                        <h3 class="post-subtitle">생일자+동반2인 자유이용권 30%할인</h3>
+                        <h4 class="post-subtitle">생일 전/후 3일내 사용가능 / 쿠폰을 신분증과 함께 매표소에 제시</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">경주월드</h2>
+                        <h3 class="post-subtitle">생일자 자유이용권 50%할인</h3>
+                        <h4 class="post-subtitle">생일 달 내 사용가능 / 쿠폰을 신분증과 함께 매표소에 제시</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+
+
+                <!-- 쇼핑 -->
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">CJ Mall</h2>
+                        <h3 class="post-subtitle">10% 할인쿠폰</h3>
+                        <h4 class="post-subtitle">5만원 이상 구매 시 최대 7천원 할인</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">SSG</h2>
+                        <h3 class="post-subtitle">10% 할인쿠폰</h3>
+                        <h4 class="post-subtitle">온라인 전용(매장사용불가) / 등급별 최대 할인금액 상이 / 주민번호 생일 기준 / 생일 달 1일 ~ 차월 첫째주 일요일</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">롭스(LOHBs)</h2>
+                        <h3 class="post-subtitle">30% 할인쿠폰</h3>
+                        <h4 class="post-subtitle">롭스 어플에서 쿠폰발급 / 생일달 2일 ~ 다음달 1일까지 사용가능 / 3만원 이상 구매시, 최대 1만원 할인</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">아리따움</h2>
+                        <h3 class="post-subtitle">뷰티포인트 5천</h3>
+                        <h4 class="post-subtitle">생일 2일전 자동 발급 / 생일 4일 후까지 사용 가능 / 모디네일 마스크팩 교환 가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">올리브영</h2>
+                        <h3 class="post-subtitle">5만원 이상 구매시 1만원 할인(VVIP) / 3만원 이상 구매시 3천원 할인(VIP)</h3>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">에뛰드하우스</h2>
+                        <h3 class="post-subtitle">최대 50% 할인(나이만큼 할인)</h3>
+                        <h4 class="post-subtitle">쿠폰 발행 후 7일내 사용 가능 / 최대 구입가능 금액은 10만원</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">이니스프리</h2>
+                        <h3 class="post-subtitle">40% 할인 쿠폰(그린 프라임 등급)</h3>
+                        <h4 class="post-subtitle">쿠폰 발행 후 7일내 사용 가능 / 최대 구입가능 금액은 15만원</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">OST</h2>
+                        <h3 class="post-subtitle">20% 할인 쿠폰</h3>
+                        <h4 class="post-subtitle">생일 달 내에 사용 가능 / 멤버십 가입자에 해당</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">ABC마트</h2>
+                        <h3 class="post-subtitle">1만원 할인</h3>
+                        <h4 class="post-subtitle">생일 달 내에 사용 가능 / 5만원 이상 구매시 사용 가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">로이드(LLOYD)</h2>
+                        <h3 class="post-subtitle">10% 할인</h3>
+                        <h4 class="post-subtitle">생일 달 내에 사용 가능 / 멤버십 가입자에 해당</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">무신사스토어</h2>
+                        <h3 class="post-subtitle">10% 할인</h3>
+                        <h4 class="post-subtitle">생일 달 내에 사용 가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">현대백화점</h2>
+                        <h3 class="post-subtitle">5종 쿠폰 제공 / 식당가 2만원 이상 결제시, 1만원 할인 / 케이크 구매시 1만원 할인 / CAFE H 무료 음료 2잔 제공</h3>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">세피앙몰</h2>
+                        <h3 class="post-subtitle">할인 가격에 5% 추가할인(최대 3만원 할인)</h3>
+                        <h4 class="post-subtitle">생일 당일 쿠폰 자동 발급 / 발급일 기준 31일 내 사용 가능</h4>
+                        <br>
+                        <br>
+                    </a>
+                    <p class="post-meta">
+                        Posted on June 23, 2021
+                    </p>
+                    <hr class="my-4">
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+            =
+        </div>
+    </div>
+
+    <!-- Footer-->
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">매력남 / yahanjunho@gmail.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js "></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js "></script>
+</body>
+
+
+</html>
